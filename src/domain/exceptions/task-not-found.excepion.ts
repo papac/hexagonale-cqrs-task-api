@@ -1,6 +1,6 @@
-class TaskNotFoundException extends Error {
-  constructor() {
+export default class TaskNotFoundException extends Error {
+  constructor(message?: string) {
     super()
-    this.message = "Task not found exception"
+    this.message = message || "Task not found exception"
   }
 }

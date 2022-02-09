@@ -8,6 +8,7 @@ export default class DeleteTaskCommandHandler implements ICommandHandler<DeleteT
 
   async execute(command: DeleteTaskCommand): Promise<any> {
     const { id } = command;
-    return this.repository.deleteTask(id);
+    const deleted = this.repository.deleteTask(id);
+    return deleted;
   }
 } 

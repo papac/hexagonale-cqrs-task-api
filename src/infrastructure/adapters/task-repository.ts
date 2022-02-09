@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import ITaskRespository from "src/domain/ports/task-respository";
 import { TaskStatus } from "src/domain/ports/task-status-enum";
+import TaskNotFoundException from "src/domain/exceptions/task-not-found.excepion";
 import TaskEntity from "../database/entities/task-entity";
 import { Repository } from 'typeorm';
 
@@ -11,12 +12,17 @@ export default class TaskRepository extends ITaskRespository {
     super();
   }
 
-  findOne(id: string) {
-    return this.repository.findOne(id);
+  async findOne(id: string) {
+    const task = await this.repository.findOne(id);
+    console.log(task);
+    if (!task) {
+      throw new TaskNotFoundException(`The task ${id} was not found`);
+    }
+    return task;
   }
 
-  findAll() {
-    return this.repository.find();
+  async findAll() {
+    return await this.repository.find();
   }
 
   async createTask(title: string, description: string) {
@@ -28,17 +34,18 @@ export default class TaskRepository extends ITaskRespository {
   }
 
   async deleteTask(id: string) {
-    const task = await this.repository.delete(id);
+    const task = await this.repository.findOne(id);
     if (!task) {
-      throw new TaskNotFoundException;
+      throw new TaskNotFoundException(`Task id ${id} was not found`);
     }
-    return await this.repository.delete(id);
+    await this.repository.delete(id);
+    return true;
   }
 
   async updateTask(id: string, title: string, description: string, status?: TaskStatus) {
     const task = await this.repository.findOne(id);
     if (!task) {
-      throw new TaskNotFoundException;
+      throw new TaskNotFoundException(`Task id ${id} was not found`);
     }
     task.title = title;
     task.description = description;
