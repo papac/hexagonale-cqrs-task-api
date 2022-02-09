@@ -2,17 +2,17 @@ import { Module } from '@nestjs/common';
 import { DomainModule } from 'src/domain/domain.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-
 import { CqrsModule } from '@nestjs/cqrs';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { TYPEORM_DATABASE_CONFIGURATION } from '../database/configuration';
+import { TaskService } from 'src/domain/services/task.service';
+import { DatabaseModule } from '../database/database.module';
 
 @Module({
   controllers: [AppController],
+  providers: [TaskService, AppService],
   imports: [
     CqrsModule,
-    TypeOrmModule.forRoot(TYPEORM_DATABASE_CONFIGURATION),
     DomainModule,
+    DatabaseModule,
   ],
 })
 export class AppModule {}

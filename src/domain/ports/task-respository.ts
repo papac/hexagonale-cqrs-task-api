@@ -1,13 +1,13 @@
 import { TaskStatus } from "./task-status-enum";
 
-export default interface ITaskRespository {
-  createTask(title: string, description: string);
+export default abstract class ITaskRespository {
+  abstract createTask(title: string, description: string);
 
-  deleteTask(id: string);
+  abstract deleteTask(id: string);
 
-  updateTask(id: string, title: string, description: string, status: TaskStatus);
+  abstract updateTask(id: string, title: string, description: string, status: TaskStatus);
 
-  findOne(id: string);
+  abstract findOne(id: string);
 
-  findAll();
+  abstract findAll();
 }

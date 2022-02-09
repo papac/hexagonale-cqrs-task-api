@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { TaskStatus } from 'src/infrastructure/database/entities/task-entity';
 import CreateTaskCommand from '../commands/create-task-action/create-task-command';
 import DeleteTaskCommand from '../commands/delete-task-action/delete-task-command';
 import UpdateTaskCommand from '../commands/update-task-action/update-task-command';
+import { TaskStatus } from '../ports/task-status-enum';
 import FetchAllQuery from '../queries/fetch-all/fetch-all-query';
 import FetchOneQuery from '../queries/fetch-one/fetch-one-query';
 
@@ -17,7 +17,7 @@ export class TaskService {
     );
   }
 
-  updateTask(id: string, title: string, description: string, status: TaskStatus) {
+  updateTask(id: string, title: string, description: string, status?: TaskStatus) {
     return this.commandBus.execute(
       new UpdateTaskCommand(id, title, description, status)
     );

@@ -1,8 +1,8 @@
 import { TaskStatus } from "src/domain/ports/task-status-enum";
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {BaseEntity, Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 
 @Entity()
-export default class TaskEntity {
+export default class TaskEntity extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id: string
 
