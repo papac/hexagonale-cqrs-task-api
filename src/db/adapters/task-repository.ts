@@ -45,12 +45,8 @@ export default class TaskRepository extends ITaskRespository {
     return await this.repository.save(task);
   }
 
-  async deleteTask(id: string): Promise<Boolean> {
-    const task = await this.repository.findOne(id);
-    if (!task) {
-      throw new TaskNotFoundException(`Task id ${id} was not found`);
-    }
-    await this.repository.delete(id);
-    return true;
+  async deleteTask(ids: Array<string>): Promise<string[]> {
+    await this.repository.createQueryBuilder('t').whereInIds(ids).softDelete();
+    return ids;
   }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { ApiBody, ApiOperation } from '@nestjs/swagger';
 import UpdateTaskSchema from '../shared/swagger/update.schema';
 import CreateTaskSchema from '../shared/swagger/create.schema';
@@ -48,11 +48,11 @@ export class AppController {
     return this.taskService.updateTask(taskId, body.title, body.description, body.status);
   }
 
-  @Delete(":taskId")
+  @Delete("/delete")
   @ApiOperation({summary: "Delete task"})
-  async deleteTask(@Param("taskId") taskId: string) {
-    this.loggerService.make(`DELETE /${taskId}`);
-    this.taskService.deleteTask(taskId);
+  async deleteTask(@Query("ids") ids: string[]) {
+    this.loggerService.make(`DELETE /${JSON.stringify(ids)}`);
+    this.taskService.deleteTask(ids);
     return {message: 'Task was deleted'}
   }
 }

@@ -23,9 +23,9 @@ export class TaskService {
     );
   }
 
-  deleteTask(id: string) {
+  deleteTask(ids: Array<string>) {
     return this.commandBus.execute(
-      new DeleteTaskCommand(id)
+      new DeleteTaskCommand(ids)
     );
   }
 
