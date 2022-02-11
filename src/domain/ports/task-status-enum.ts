@@ -1,3 +1,3 @@
 export enum TaskStatus {
-  completed, waiting, inprogres
+  waiting = "waiting", pending = "pending", completed = "completed"
 }

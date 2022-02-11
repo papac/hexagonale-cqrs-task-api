@@ -12,5 +12,5 @@ export class TaskDto {
 
   @IsString()
   @IsOptional()
-  status?: TaskStatus;
+  status?: TaskStatus.completed;
 }
