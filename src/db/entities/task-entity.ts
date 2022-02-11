@@ -12,7 +12,7 @@ export default class TaskEntity extends BaseEntity {
   @Column()
   description: string;
 
-  @Column()
+  @Column({default: "waiting"})
   status: TaskStatus;
 
   @CreateDateColumn()
