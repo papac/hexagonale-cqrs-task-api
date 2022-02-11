@@ -11,7 +11,7 @@ export class AppController {
   constructor(private readonly taskService: TaskService, private readonly loggerService: LoggerService) {}
 
   @Get()
-  @ApiOperation({summary: "Get list of task"})
+  @ApiOperation({summary: "List all tasks"})
   async getHello() {
     return await this.taskService.fetchAll();
   }
@@ -29,7 +29,7 @@ export class AppController {
       properties: CreateTaskSchema,
     },
   })
-  @ApiOperation({summary: "Create task"})
+  @ApiOperation({summary: "Add a new task"})
   async createTaskReqeuest(@Body() taskDto: TaskDto) {
     this.loggerService.make(`POST /`, [taskDto]);
     const { title, description } = taskDto;
@@ -42,14 +42,14 @@ export class AppController {
       properties: UpdateTaskSchema,
     },
   })
-  @ApiOperation({summary: "Update task"})
+  @ApiOperation({summary: "Update a new task"})
   async updateTask(@Param("taskId") taskId: string, @Body() body: TaskDto) {
     this.loggerService.make(`PUT /${taskId}`, [body]);
     return this.taskService.updateTask(taskId, body.title, body.description, body.status);
   }
 
-  @Delete("/delete")
-  @ApiOperation({summary: "Delete task"})
+  @Delete()
+  @ApiOperation({summary: "Delete one or many tasks"})
   async deleteTask(@Query("ids") ids: string) {
     this.loggerService.make(`DELETE /${ids}`);
     this.taskService.deleteTask(ids.split(","));
