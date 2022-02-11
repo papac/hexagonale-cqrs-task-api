@@ -1,5 +1,5 @@
 import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
-import TaskEntity from "src/infrastructure/database/entities/task-entity";
+import TaskEntity from "src/db/entities/task-entity";
 import FetchOneQuery from "./fetch-one-query";
 import ITaskRespository from "src/domain/ports/task-respository";
 
