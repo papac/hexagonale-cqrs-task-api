@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiBody, ApiOperation } from '@nestjs/swagger';
 import UpdateTaskSchema from '../shared/swagger/update.schema';
 import CreateTaskSchema from '../shared/swagger/create.schema';
