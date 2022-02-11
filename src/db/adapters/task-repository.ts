@@ -46,7 +46,7 @@ export default class TaskRepository extends ITaskRespository {
   }
 
   async deleteTask(ids: Array<string>): Promise<string[]> {
-    await this.repository.createQueryBuilder('t').whereInIds(ids).softDelete();
+    await this.repository.createQueryBuilder().whereInIds(ids).delete().execute();
     return ids;
   }
 }

@@ -52,7 +52,7 @@ export class AppController {
   @ApiOperation({summary: "Delete one or many tasks"})
   async deleteTask(@Query("ids") ids: string) {
     this.loggerService.make(`DELETE /${ids}`);
-    this.taskService.deleteTask(ids.split(","));
+    const res = this.taskService.deleteTask(ids.split(","));
     return {message: 'Task was deleted'}
   }
 }
