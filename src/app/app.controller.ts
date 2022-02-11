@@ -1,5 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Req } from '@nestjs/common';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiBody, ApiOperation } from '@nestjs/swagger';
+import UpdateTaskSchema from '../shared/swagger/update.schema';
+import CreateTaskSchema from '../shared/swagger/create.schema';
 import { TaskService } from '../domain/task.service';
 import LoggerService from '../shared/infrastructure/logger.service';
 import { TaskDto } from './dtos/task.dto';
@@ -22,6 +24,11 @@ export class AppController {
   }
 
   @Post()
+  @ApiBody({
+    schema: {
+      properties: CreateTaskSchema,
+    },
+  })
   @ApiOperation({summary: "Create task"})
   async createTaskReqeuest(@Body() taskDto: TaskDto) {
     this.loggerService.make(`POST /`, [taskDto]);
@@ -30,6 +37,11 @@ export class AppController {
   }
 
   @Put(":taskId")
+  @ApiBody({
+    schema: {
+      properties: UpdateTaskSchema,
+    },
+  })
   @ApiOperation({summary: "Update task"})
   async updateTask(@Param("taskId") taskId: string, @Body() body: TaskDto) {
     this.loggerService.make(`PUT /${taskId}`, [body]);
