@@ -9,6 +9,7 @@ async function bootstrap() {
     .setDescription('Task API Documentation')
     .setVersion('0.0.1')
     .build();
+
   const document = SwaggerModule.createDocument(app, swaggerOptions);
   SwaggerModule.setup('docs', app, document);
 
