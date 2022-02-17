@@ -11,4 +11,4 @@ export default class DeleteTaskCommandHandler implements ICommandHandler<DeleteT
     const deleted = this.repository.deleteTask(ids);
     return deleted;
   }
-} 
+}
