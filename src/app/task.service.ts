@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { ITaskService } from 'src/domain/ports/task.service';
 import { CreateTaskCommand } from '../domain/commands/create-task.command';
 import { DeleteTaskCommand } from '../domain/commands/delete-task.command';
 import { UpdateTaskCommand } from '../domain/commands/update-task.command';
@@ -8,7 +9,7 @@ import { FetchAllQuery } from '../domain/queries/fetch-all.query';
 import { FetchOneQuery } from '../domain/queries/fetch-one.query';
 
 @Injectable()
-export class TaskService {
+export class TaskService implements ITaskService {
   constructor(readonly commandBus: CommandBus, readonly queryBus: QueryBus) {}
 
   createTask(title: string, description: string) {
