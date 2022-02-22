@@ -8,12 +8,8 @@ import LoggerService from './infrastructure/logger.service';
 import StatusController from './app/status.controller';
 
 @Module({
-  controllers: [AppController, StatusController],
-  providers: [TaskService, LoggerService],
-  imports: [
-    CqrsModule,
-    DomainModule,
-    DatabaseModule,
-  ],
+	controllers: [AppController, StatusController],
+	providers: [TaskService, LoggerService],
+	imports: [CqrsModule, DomainModule, DatabaseModule],
 })
 export class AppModule {}

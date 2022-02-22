@@ -1,23 +1,30 @@
-import { TaskStatus } from "src/domain/ports/status.enum";
-import {BaseEntity, Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn, CreateDateColumn} from "typeorm";
+import { TaskStatus } from 'src/domain/ports/status.enum';
+import {
+	BaseEntity,
+	Entity,
+	PrimaryGeneratedColumn,
+	Column,
+	UpdateDateColumn,
+	CreateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export default class TaskEntity extends BaseEntity {
-  @PrimaryGeneratedColumn("uuid")
-  id: string
+	@PrimaryGeneratedColumn('uuid')
+	id: string;
 
-  @Column()
-  title: string;
+	@Column()
+	title: string;
 
-  @Column()
-  description: string;
+	@Column()
+	description: string;
 
-  @Column({default: "waiting"})
-  status: TaskStatus;
+	@Column({ default: 'waiting' })
+	status: TaskStatus;
 
-  @CreateDateColumn()
-  createdAt: Date;
+	@CreateDateColumn()
+	createdAt: Date;
 
-  @UpdateDateColumn()
-  updatedAt: Date;
+	@UpdateDateColumn()
+	updatedAt: Date;
 }

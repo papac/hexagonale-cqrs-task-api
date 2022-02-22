@@ -1,8 +1,8 @@
 export default {
-  title: {
-    type: 'string',
-  },
-  description: {
-    type: 'string',
-  },
+	title: {
+		type: 'string',
+	},
+	description: {
+		type: 'string',
+	},
 };

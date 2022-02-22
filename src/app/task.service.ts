@@ -10,35 +10,32 @@ import { FetchOneQuery } from '../domain/queries/fetch-one.query';
 
 @Injectable()
 export class TaskService implements ITaskService {
-  constructor(readonly commandBus: CommandBus, readonly queryBus: QueryBus) {}
+	constructor(readonly commandBus: CommandBus, readonly queryBus: QueryBus) {}
 
-  createTask(title: string, description: string) {
-    return this.commandBus.execute(
-      new CreateTaskCommand(title, description)
-    );
-  }
+	createTask(title: string, description: string) {
+		return this.commandBus.execute(new CreateTaskCommand(title, description));
+	}
 
-  updateTask(id: string, title: string, description: string, status?: TaskStatus) {
-    return this.commandBus.execute(
-      new UpdateTaskCommand(id, title, description, status)
-    );
-  }
+	updateTask(
+		id: string,
+		title: string,
+		description: string,
+		status?: TaskStatus,
+	) {
+		return this.commandBus.execute(
+			new UpdateTaskCommand(id, title, description, status),
+		);
+	}
 
-  deleteTask(ids: Array<string>) {
-    return this.commandBus.execute(
-      new DeleteTaskCommand(ids)
-    );
-  }
+	deleteTask(ids: Array<string>) {
+		return this.commandBus.execute(new DeleteTaskCommand(ids));
+	}
 
-  findOne(id: string) {
-    return this.queryBus.execute(
-      new FetchOneQuery(id)
-    );
-  }
+	findOne(id: string) {
+		return this.queryBus.execute(new FetchOneQuery(id));
+	}
 
-  fetchAll() {
-    return this.queryBus.execute(
-      new FetchAllQuery()
-    )
-  }
+	fetchAll() {
+		return this.queryBus.execute(new FetchAllQuery());
+	}
 }
