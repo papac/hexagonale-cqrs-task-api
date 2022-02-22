@@ -1,6 +1,6 @@
 import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
-import TaskEntity from "src/infrastructure/db/entities/task-entity";
-import ITaskRespository from "src/domain/ports/task-respository";
+import TaskEntity from "src/infrastructure/db/entities/task.entity";
+import ITaskRespository from "src/domain/ports/task.respository";
 
 export class FetchOneQuery {
   constructor(readonly id: string) {}

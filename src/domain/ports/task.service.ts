@@ -1,4 +1,4 @@
-import { TaskStatus } from "./task-status-enum";
+import { TaskStatus } from "./status.enum";
 
 export interface ITaskService {
   createTask(title: string, description: string);

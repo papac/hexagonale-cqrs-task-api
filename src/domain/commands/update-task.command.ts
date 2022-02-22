@@ -1,6 +1,6 @@
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
-import ITaskRespository from "src/domain/ports/task-respository";
-import { TaskStatus } from "../ports/task-status-enum";
+import ITaskRespository from "src/domain/ports/task.respository";
+import { TaskStatus } from "../ports/status.enum";
 
 export class UpdateTaskCommand {
   constructor(readonly id: string, readonly title: string, readonly description: string, readonly status: TaskStatus) {}

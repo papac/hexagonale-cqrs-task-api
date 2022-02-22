@@ -1,4 +1,4 @@
-import { TaskStatus } from "src/domain/ports/task-status-enum";
+import { TaskStatus } from "src/domain/ports/status.enum";
 import {BaseEntity, Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn, CreateDateColumn} from "typeorm";
 
 @Entity()

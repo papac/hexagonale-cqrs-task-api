@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsOptional, IsString } from "class-validator";
-import { TaskStatus } from "src/domain/ports/task-status-enum";
+import { TaskStatus } from "src/domain/ports/status.enum";
 
 export class TaskDto {
   @IsString()

@@ -1,6 +1,6 @@
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
-import TaskEntity from "src/infrastructure/db/entities/task-entity";
-import ITaskRespository from "src/domain/ports/task-respository";
+import TaskEntity from "src/infrastructure/db/entities/task.entity";
+import ITaskRespository from "src/domain/ports/task.respository";
 
 export class CreateTaskCommand {
   constructor(readonly title: string, readonly description: string) {}

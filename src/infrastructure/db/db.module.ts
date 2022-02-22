@@ -10,7 +10,7 @@ export const TYPEORM_DATABASE_CONFIGURATION: TypeOrmModuleOptions = {
   username: 'task_user',
   password: 'password',
   database: "task_database",
-  entities: [__dirname + '/entities/*-entity.{ts,js}'],
+  entities: [__dirname + '/entities/*entity.{ts,js}'],
   subscribers: [],
   migrationsTableName: 'migrations',
   synchronize: true,

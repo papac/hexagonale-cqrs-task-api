@@ -4,7 +4,7 @@ import { ITaskService } from 'src/domain/ports/task.service';
 import { CreateTaskCommand } from '../domain/commands/create-task.command';
 import { DeleteTaskCommand } from '../domain/commands/delete-task.command';
 import { UpdateTaskCommand } from '../domain/commands/update-task.command';
-import { TaskStatus } from '../domain/ports/task-status-enum';
+import { TaskStatus } from '../domain/ports/status.enum';
 import { FetchAllQuery } from '../domain/queries/fetch-all.query';
 import { FetchOneQuery } from '../domain/queries/fetch-one.query';
 

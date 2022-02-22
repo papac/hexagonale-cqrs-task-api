@@ -1,5 +1,5 @@
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
-import ITaskRespository from "src/domain/ports/task-respository";
+import ITaskRespository from "src/domain/ports/task.respository";
 
 export class DeleteTaskCommand {
   constructor(readonly ids: Array<string>) {}

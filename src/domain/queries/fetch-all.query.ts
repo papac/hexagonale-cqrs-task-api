@@ -1,5 +1,5 @@
 import { QueryHandler, IQueryHandler } from "@nestjs/cqrs";
-import ITaskRespository from "src/domain/ports/task-respository";
+import ITaskRespository from "src/domain/ports/task.respository";
 
 export class FetchAllQuery {
   constructor() {}

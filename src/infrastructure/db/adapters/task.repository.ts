@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import ITaskRespository from "src/domain/ports/task-respository";
-import { TaskStatus } from "src/domain/ports/task-status-enum";
+import ITaskRespository from "src/domain/ports/task.respository";
+import { TaskStatus } from "src/domain/ports/status.enum";
 import TaskNotFoundException from "src/domain/exceptions/task-not-found.excepion";
-import TaskEntity from "../entities/task-entity";
+import TaskEntity from "../entities/task.entity";
 import { Repository } from 'typeorm';
 
 @Injectable()
