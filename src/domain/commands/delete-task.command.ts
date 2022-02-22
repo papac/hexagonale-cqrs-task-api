@@ -1,9 +1,12 @@
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
 import ITaskRespository from "src/domain/ports/task-respository";
-import DeleteTaskCommand from "./delete-task-command";
+
+export class DeleteTaskCommand {
+  constructor(readonly ids: Array<string>) {}
+}
 
 @CommandHandler(DeleteTaskCommand)
-export default class DeleteTaskCommandHandler implements ICommandHandler<DeleteTaskCommand> {
+export class DeleteTaskCommandHandler implements ICommandHandler<DeleteTaskCommand> {
   constructor(private readonly repository: ITaskRespository) {}
 
   async execute(command: DeleteTaskCommand): Promise<any> {

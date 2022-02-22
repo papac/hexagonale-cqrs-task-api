@@ -1,11 +1,13 @@
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
-import TaskEntity from "src/db/entities/task-entity";
-import { InjectRepository } from "@nestjs/typeorm";
-import UpdateTaskCommand from "./update-task-command";
 import ITaskRespository from "src/domain/ports/task-respository";
+import { TaskStatus } from "../ports/task-status-enum";
+
+export class UpdateTaskCommand {
+  constructor(readonly id: string, readonly title: string, readonly description: string, readonly status: TaskStatus) {}
+}
 
 @CommandHandler(UpdateTaskCommand)
-export default class UpdateTaskCommandHandler implements ICommandHandler<UpdateTaskCommand> {
+export class UpdateTaskCommandHandler implements ICommandHandler<UpdateTaskCommand> {
   constructor(private readonly repository: ITaskRespository) {}
 
   async execute(command: UpdateTaskCommand): Promise<any> {

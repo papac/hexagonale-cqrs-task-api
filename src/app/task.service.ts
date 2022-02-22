@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import CreateTaskCommand from './commands/create-task-action/create-task-command';
-import DeleteTaskCommand from './commands/delete-task-action/delete-task-command';
-import UpdateTaskCommand from './commands/update-task-action/update-task-command';
-import { TaskStatus } from './ports/task-status-enum';
-import FetchAllQuery from './queries/fetch-all/fetch-all-query';
-import FetchOneQuery from './queries/fetch-one/fetch-one-query';
+import { CreateTaskCommand } from '../domain/commands/create-task.command';
+import { DeleteTaskCommand } from '../domain/commands/delete-task.command';
+import { UpdateTaskCommand } from '../domain/commands/update-task.command';
+import { TaskStatus } from '../domain/ports/task-status-enum';
+import { FetchAllQuery } from '../domain/queries/fetch-all.query';
+import { FetchOneQuery } from '../domain/queries/fetch-one.query';
 
 @Injectable()
 export class TaskService {

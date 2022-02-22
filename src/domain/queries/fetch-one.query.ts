@@ -1,10 +1,13 @@
 import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
-import TaskEntity from "src/db/entities/task-entity";
-import FetchOneQuery from "./fetch-one-query";
+import TaskEntity from "src/infrastructure/db/entities/task-entity";
 import ITaskRespository from "src/domain/ports/task-respository";
 
+export class FetchOneQuery {
+  constructor(readonly id: string) {}
+}
+
 @QueryHandler(FetchOneQuery)
-export default class FetchOneHandler implements IQueryHandler<FetchOneQuery> {
+export class FetchOneHandler implements IQueryHandler<FetchOneQuery> {
   constructor(private readonly repository: ITaskRespository) {}
 
   async execute(query: FetchOneQuery): Promise<TaskEntity> {
